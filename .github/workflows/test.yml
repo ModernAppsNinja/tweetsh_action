@@ -15,6 +15,9 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
+      - name: make entrypoint script executable
+        run: |
+          chmod +x src/entrypoint.sh
       - name: Run tweet.sh
         uses: ./ # Uses an action in the root directory
         with:
