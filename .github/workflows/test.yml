@@ -1,0 +1,22 @@
+on:
+  workflow_dispatch:
+    inputs:
+      tweet:
+        description: 'Enter your Tweet'
+        required: true
+        default: ''  
+
+jobs:
+  tweetsh_action:
+    runs-on: ubuntu-latest
+    name: Run tweet.sh
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run tweet.sh
+        uses: ./ # Uses an action in the root directory
+        with:
+          command: |
+            ${{ github.event.inputs.tweet }}
